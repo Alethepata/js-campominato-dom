@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const end = document.querySelector('.end');
 
 // const btn = document.getElementById('btn');
 
@@ -27,21 +28,26 @@ for( let i = 1; i <= 100; i++){
 }
    console.log(square)
    
-    square.addEventListener('click', function(){
-
-        this.classList.add('active'); 
-
-        if(this.className == 'square safe active'){
-         console.log('safe');  
-        }else {
-            console.log('HAI PERSO')
-        }
-        
-    })
+   square.addEventListener('click', endleClickSquare);
 
     container.append(square);
 } 
 
+
+function endleClickSquare(){ 
+
+    this.classList.add('active');
+    this.removeEventListener('click', endleClickSquare);
+    if(this.className == 'square safe active'){
+        console.log('safe');  
+       }else {
+           console.log('HAI PERSO');
+           end.classList.add('effect');
+       }
+
+    
+
+  }
 
 function createSquare(index){
 
