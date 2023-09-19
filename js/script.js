@@ -15,15 +15,34 @@ for( let r = 1; r <= 16; r++){
 
 for( let i = 1; i <= 100; i++){
     const square = createSquare(i);
-
+    square.classList.add('safe');
+    let s= 0;
+    while(s < bomba.length){
+    s++
+    if(square.id == bomba[s]){
+    square.classList.remove('safe'); 
+    square.classList.add('bg-danger');  
+    square.classList.add('danger');  
+    } 
+}
+   console.log(square)
+   
     square.addEventListener('click', function(){
 
-        this.classList.add('active');
+        this.classList.add('active'); 
 
+        if(this.className == 'square safe active'){
+         console.log('safe');  
+        }else {
+            console.log('HAI PERSO')
+        }
+        
     })
 
     container.append(square);
-}
+} 
+
+
 function createSquare(index){
 
     const squares = document.createElement('div');
@@ -32,18 +51,11 @@ function createSquare(index){
 
     squares.id = index;
 
-    let s= 0;
-    while(s < bomba.length){
-        s++
-        if(squares.id == bomba[s]) squares.classList.add('bg-danger');
-        
-    }
-    
-    squares.innerHTML = `<span>${index}</span>`;
-
     return squares;
 
 }
+
+
 
 function randomize(min, max){
    return Math.floor(Math.random() * (max - min + 1) + min);
@@ -54,6 +66,7 @@ btn.addEventListener('click', function(){
     container.classList.remove('d-none'); 
 
 })
+
 
 
 
