@@ -21,15 +21,7 @@
     color: whitesmoke;
     cursor: pointer;
 }
-.square.uno{
-    width: calc(100% / 10);
-}
-.square.due{
-    width: calc(100% / 9);
-}
-.square.tre{
-    width: calc(100% / 7);
-}
+
 .square span {
     display: none;
 }
