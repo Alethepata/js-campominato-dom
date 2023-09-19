@@ -1,22 +1,27 @@
 const container = document.querySelector('.container');
 
-const btn = document.getElementById('btn');
+// const btn = document.getElementById('btn');
 
-container.classList.add('d-none');
+// container.classList.add('d-none');
+
+const bomba = [];
+
 
 
 for( let r = 1; r <= 16; r++){
-let num = randomize(1, 100);
-const bomba = [num];
-console.log(bomba); 
+    const num = randomize(1, 100); 
+    if (!bomba.includes(num)) bomba.push(num);
+    
 }
+
+console.log(bomba);  
 
 for( let i = 1; i <= 100; i++){
     const square = createSquare(i);
 
     square.addEventListener('click', function(){
 
-        this.classList.toggle('active');
+        this.classList.add('active');
 
     })
 
