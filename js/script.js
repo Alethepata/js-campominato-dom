@@ -30,9 +30,13 @@ for( let i = 1; i <= 100; i++){
 function createSquare(index){
     const squares = document.createElement('div');
 
-    squares.className = 'square uno';
+    squares.className = 'square';
+
+    squares.id = index;
 
     squares.innerHTML = `<span>${index}</span>`;
+
+    console.log(squares);
 
     return squares;
 
