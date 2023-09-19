@@ -7,14 +7,11 @@ const container = document.querySelector('.container');
 const bomba = [];
 
 
-
 for( let r = 1; r <= 16; r++){
     const num = randomize(1, 100); 
     if (!bomba.includes(num)) bomba.push(num);
-    
+     
 }
-
-console.log(bomba);  
 
 for( let i = 1; i <= 100; i++){
     const square = createSquare(i);
@@ -28,15 +25,21 @@ for( let i = 1; i <= 100; i++){
     container.append(square);
 }
 function createSquare(index){
+
     const squares = document.createElement('div');
 
     squares.className = 'square';
 
     squares.id = index;
 
+    let s= 0;
+    while(s < bomba.length){
+        s++
+        if(squares.id == bomba[s]) squares.classList.add('bg-danger');
+        
+    }
+    
     squares.innerHTML = `<span>${index}</span>`;
-
-    console.log(squares);
 
     return squares;
 
@@ -46,9 +49,6 @@ function randomize(min, max){
    return Math.floor(Math.random() * (max - min + 1) + min);
    
 }
-
-
-
 
 btn.addEventListener('click', function(){
     container.classList.remove('d-none'); 
