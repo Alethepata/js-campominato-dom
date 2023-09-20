@@ -1,17 +1,19 @@
 const container = document.querySelector('.container');
 const end = document.querySelector('.end');
+const endMessage = document.querySelector('.end-message');
 
-// const btn = document.getElementById('btn');
+const btn = document.getElementById('btn');
 
-// container.classList.add('d-none');
+container.classList.add('d-none');
 
 const bomba = [];
+let points=0;
+let message;
 
 
-for( let r = 1; r <= 16; r++){
-    const num = randomize(1, 100); 
+while(bomba.length < 16){
+    const num = randomize(1, 100);
     if (!bomba.includes(num)) bomba.push(num);
-     
 }
 
 for( let i = 1; i <= 100; i++){
@@ -26,7 +28,6 @@ for( let i = 1; i <= 100; i++){
     square.classList.add('danger');  
     } 
 }
-   console.log(square)
    
    square.addEventListener('click', endleClickSquare);
 
@@ -35,19 +36,29 @@ for( let i = 1; i <= 100; i++){
 
 
 function endleClickSquare(){ 
+    
 
     this.classList.add('active');
     this.removeEventListener('click', endleClickSquare);
     if(this.className == 'square safe active'){
-        console.log('safe');  
+        
+        points++;
+        
+        console.log(points);
+        if(points === 100 - bomba.length + 1){
+            console.log('HAI vinto');
+            end.classList.add('effect');
+            endMessage.innerHTML= 'Hai vinto';
+        }
+        
        }else {
-           console.log('HAI PERSO');
-           end.classList.add('effect');
-       }
+        end.classList.add('effect');
+        message= `Hai perso! Hai fatto ${points} punti su 100`;
 
-    
+    endMessage.innerHTML = message;
 
   }
+}
 
 function createSquare(index){
 
